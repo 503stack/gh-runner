@@ -3,6 +3,8 @@ FROM ghcr.io/actions/actions-runner:2.323.0@sha256:831a2607a2618e4b79d9323b4c723
 
 USER root
 
+ARG VERSION_ID="22.04"
+
 # install curl and jq
 RUN apt-get update && apt-get install -y curl wget jq apt-utils unzip git
 
