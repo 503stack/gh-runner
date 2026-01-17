@@ -16,7 +16,7 @@ jobs:
       IMAGENAME: github-actions-runner
     steps:
       - name: Clone the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Buildah Action
         id: build
