@@ -1,9 +1,7 @@
-FROM ghcr.io/actions/actions-runner:2.331.0@sha256:dced476aa42703ebd9aafc295ce52f160989c4528e831fc3be2aef83a1b3f6da
+FROM ghcr.io/actions/actions-runner:sha256-dced476aa42703ebd9aafc295ce52f160989c4528e831fc3be2aef83a1b3f6da
 # for latest release, see https://github.com/actions/runner/releases
 
 USER root
-
-ARG VERSION_ID="22.04"
 
 # install curl and jq
 RUN apt-get update && apt-get install -y curl wget jq apt-utils unzip git
@@ -14,13 +12,6 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 # Install nodejs 20.x
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
-
-# Install powershell
-RUN wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb && \
-    dpkg -i packages-microsoft-prod.deb && \
-    rm packages-microsoft-prod.deb && \
-    apt-get update && \
-    apt-get install -y powershell
 
 # Install gh cli
 RUN mkdir -p -m 755 /etc/apt/keyrings && \
