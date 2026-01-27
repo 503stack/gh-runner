@@ -9,8 +9,10 @@ RUN apt-get update && apt-get install -y curl wget jq apt-utils unzip git
 # Install azcli
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
-# Install nodejs 20.x
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+# Install nodejs 22.x
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update && \
     apt-get install -y nodejs
 
 # Install gh cli
