@@ -20,7 +20,7 @@ jobs:
 
       - name: Buildah Action
         id: build
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v3
         with:
           image: ${{ env.IMAGENAME }}
           tags: ${{ github.sha }} latest
